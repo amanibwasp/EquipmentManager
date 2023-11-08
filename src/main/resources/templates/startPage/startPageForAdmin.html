@@ -2,12 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title th:text="'Добро пожаловать, '+${#authentication.principal.name}"></title>
+    <title th:text="'Добро пожаловать, ' + ${#authentication.principal.name}"></title>
 </head>
 <body>
-Добро пожаловать
-
-<div sec:authorize="hasRole('ROLE_ADMIN')">
+<h1 th:text="'Добро пожаловать, ' + ${#authentication.principal.name}">Добро пожаловать</h1>
         <h2>Заявки на регистрацию</h2>
         <div th:each = "guest: ${guest_applications}">
             <div>
@@ -19,7 +17,7 @@
             </div>
         </div>
         <hr/>
-        <h2>Мероприятия</h2>
+        <h2>Events, you participate in</h2>
         <div th:each = "event: ${events}">
             <div>
                 <hr/>
@@ -37,6 +35,5 @@
         <button>Инвентарь</button>
     </a>
 
-</div>
 </body>
 </html>

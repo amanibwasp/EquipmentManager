@@ -33,6 +33,8 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/register").permitAll()
+                        .requestMatchers("/event/new/**").hasRole("ADMIN")
+                        .requestMatchers("/equipment/new/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(
