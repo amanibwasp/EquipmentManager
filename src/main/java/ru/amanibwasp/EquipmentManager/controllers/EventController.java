@@ -94,7 +94,13 @@ public class EventController {
     @PostMapping("/{id}/responsibilities")
     public String responsibilities_save(@PathVariable Long id,
                                         @ModelAttribute("form") ResponsibilitiesForm form){
-        //Saving id of chosen person mapped to the equipment
+        for(Equipment equipment: form.getEquipmentList()){
+            TakenEquipment takenEquipment = new TakenEquipment();
+            takenEquipment.setEvent_id(id);
+            takenEquipment.setEquipment_id(equipment.getId());
+            takenEquipment.setPerson_id(equipment.getResponsible_person_id());
+            takenEquipmentService.create(takenEquipment);
+        }
         return "redirect:/event";
     }
 
