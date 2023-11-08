@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>show_person</title>
+</head>
+<body>
+<h1>INFO ABOUT PERSON</h1>
+<hr/>
+<span th:text="${person.toString()}"></span>
+<br/>
+<button>
+    <a href="/person">BACK</a>
+</button>
+<form th:method="DELETE" th:action="@{/person/{id} (id = ${person.getId()})}">
+    <input type="submit" value="DELETE"/>
+</form>
+<form th:method="GET" th:action="@{/person/{id}/edit (id = ${person.getId()})}">
+    <input type="submit" value="UPDATE"/>
+</form>
+</body>
+</html>

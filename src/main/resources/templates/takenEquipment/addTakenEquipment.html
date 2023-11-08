@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>add_taken_equipment</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/takenequipment}" th:object="${takenEquipment}">
+    <label type="text" for="event">Event:</label>
+    <input type="text" id="event" name="event" th:field="*{event_id}"/>
+    <label type="text" for="equipment">Equipment:</label>
+    <input type="text" id="equipment" name="equipment" th:field="*{equipment_id}"/>
+    <label type="text" for="cnt">Count:</label>
+    <input type="text" id="cnt" name="cnt" th:field="*{cnt}"/>
+    <label type="text" for="responsible_person">Responsible Person:</label>
+    <input type="text" id="responsible_person" name="responsible_person" th:field="*{person_id}"/>
+
+    <input type="submit" value="ADD"/>
+</form>
+</body>
+</html>

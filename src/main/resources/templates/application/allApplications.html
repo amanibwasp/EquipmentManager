@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>all_applications</title>
+</head>
+<body>
+<div th:each="application: ${applicationsList}">
+    <span th:text="${application.getId()}"></span>
+    <span th:text="${application.getName()}"></span>
+    <span th:text="${application.getSurname()}"></span>
+    <span th:text="${application.getPatronymic()}"></span>
+    <span th:text="${application.getDob()}"></span>
+    <button><a th:href="@{/application/{id} (id = ${application.getId()})}">DETAILS</a></button>
+    <br/>
+    <hr/>
+</div>
+<button>
+    <a href="/application/new">
+        ADD
+    </a>
+</button>
+
+</body>
+</html>

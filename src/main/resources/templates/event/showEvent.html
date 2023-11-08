@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${event.title}"></title>
+</head>
+<body>
+<hr/>
+<h1 th:text="'Событие: ' + ${event.title}"></h1>
+<br/>
+
+<h2>Описание: </h2>
+<div th:text="${event.description}"></div>
+<br>
+<h2>Дата: </h2>
+<span th:text="${event.event_date}"></span>
+<br>
+<h2>Участники: </h2>
+<div th:each="person: ${event.participants}">
+    <hr>
+    <span th:text="${person.name}"></span>
+    <span th:text="${person.surname}"></span>
+    <span th:text="${person.email}"></span>
+</div>
+<button>
+    <a href="/event">BACK</a>
+</button>
+<form th:method="POST" th:action="@{/event/{id}/delete (id = ${event.getId()})}">
+    <input type="submit" value="DELETE EVENT"/>
+</form>
+<form th:method="GET" th:action="@{/event/{id}/responsibilities (id = ${event.getId()})}">
+    <input type="submit" value="Determine responsible ones for equipment for the event"/>
+</form>
+</body>
+</html>

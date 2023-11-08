@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>all_equipment</title>
+</head>
+<body>
+
+<div th:each="equipment: ${equipmentList}">
+    <span th:text="${equipment.getId()}"></span>
+    <span th:text="${equipment.getTitle()}"></span>
+    <button><a th:href="@{/equipment/{id} (id = ${equipment.getId()})}">DETAILS</a></button>
+    <br/>
+    <hr/>
+</div>
+<button>
+    <a href="/equipment/new">
+        ADD
+    </a>
+</button>
+
+</body>
+</html>

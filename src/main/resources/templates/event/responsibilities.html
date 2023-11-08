@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>responsible ones for equipment</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/event/{id}/responsibilities (id = ${id})}" th:object="${form}">
+    <div th:each="equipment, itemStat: *{equipmentList}">
+        <hr>
+        <span th:text="${equipment}"></span>
+        <select th:field="*{equipmentList[__${itemStat.index}__].responsible_person_id}">
+            <option th:each="person : ${people}" th:value="${person.id}">
+                <span th:text="${person.name}"></span>
+                <span th:text="${person.surname}"></span>
+                <span th:text="${person.email}"></span>
+            </option>
+        </select>
+    </div>
+    <span th:text="${form}"></span>
+    <input type="submit" value="CREATE"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>all_events</title>
+</head>
+<body>
+<div th:each="event: ${eventsList}">
+    <span th:text="${event.id}"></span>
+    <span th:text="${event.title}"></span>
+    <span th:text="${event.description}"></span>
+    <span th:text="${event.event_date}"></span>
+    <button><a th:href="@{/event/{id} (id = ${event.id})}">DETAILS</a></button>
+    <br/>
+    <hr/>
+</div>
+<button>
+    <a href="/event/new">
+        ADD
+    </a>
+</button>
+
+</body>
+</html>

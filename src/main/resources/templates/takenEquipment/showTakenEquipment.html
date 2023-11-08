@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>show_taken_equipment</title>
+</head>
+<body>
+<h1>INFO ABOUT TAKEN EQUIPMENT</h1>
+<hr/>
+<span th:text="${takenEquipment.toString()}"></span>
+<br/>
+<button>
+    <a href="/takenequipment">BACK</a>
+</button>
+<form th:method="DELETE" th:action="@{/takenequipment/{id} (id = ${takenEquipment.getId()})}">
+    <input type="submit" value="DELETE"/>
+</form>
+<form th:method="GET" th:action="@{/takenequipment/{id}/edit (id = ${takenEquipment.getId()})}">
+    <input type="submit" value="UPDATE"/>
+</form>
+</body>
+</html>

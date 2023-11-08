@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>all_taken_equipment</title>
+</head>
+<body>
+<div th:each="tk: ${takenEquipmentList}">
+    <span th:text="${tk.getId()}"></span>
+    <span th:text="${tk.getEquipmentId()}"></span>
+    <span th:text="${tk.getCnt()}"></span>
+    <span th:text="${tk.getEventId()}"></span>
+    <span th:text="${tk.getPersonId()}"></span>
+    <button><a th:href="@{/takenequipment/{id} (id = ${tk.getId()})}">DETAILS</a></button>
+    <br/>
+    <hr/>
+</div>
+<button>
+    <a href="/takenequipment/new">
+        ADD
+    </a>
+</button>
+
+</body>
+</html>

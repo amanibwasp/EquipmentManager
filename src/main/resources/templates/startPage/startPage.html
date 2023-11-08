@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Добро пожаловать, '+${#authentication.principal.name}"></title>
+</head>
+<body>
+Добро пожаловать
+
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+        <h2>Заявки на регистрацию</h2>
+        <div th:each = "guest: ${guest_applications}">
+            <div>
+                <span th:text="${guest.name}"></span>
+                <span th:text="${guest.surname}"></span>
+                <span th:text="${guest.patronymic}"></span>
+                <span th:text="${guest.email}"></span>
+                <span th:text="${guest.dob}"></span>
+            </div>
+        </div>
+        <hr/>
+        <h2>Мероприятия</h2>
+        <div th:each = "event: ${events}">
+            <div>
+                <hr/>
+                <span th:text="${event.title}"></span>
+                <span th:text="${event.description}"></span>
+                <span th:text="${event.event_date}"></span>
+                <div th:each="person : ${event.participants}">
+                    <span th:text="${person.name}"></span>
+                    <span th:text="${person.surname}"></span>
+                    <span th:text="${person.email}"></span>
+                </div>
+            </div>
+        </div>
+    <a href="/equipment">
+        <button>Инвентарь</button>
+    </a>
+
+</div>
+</body>
+</html>

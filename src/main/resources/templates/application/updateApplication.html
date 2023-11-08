@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update_application</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/application/{id} (id = ${application.getId()})}" th:object="${application}">
+    <label type="text" for="name">Name:</label>
+    <input type="text" id="name" name="name" th:field="*{name}"/>
+    <label type="text" for="surname">Surname:</label>
+    <input type="text" id="surname" name="surname" th:field="*{surname}"/>
+    <label type="text" for="patronymic">Patronymic:</label>
+    <input type="text" id="patronymic" name="patronymic" th:field="*{patronymic}"/>
+    <label for="dob">Enter date of birth:</label>
+    <input type="date" id="dob" name="dob" min="1900-01-01" max="2018-12-31" th:field="*{dob}"/>
+    <input type="submit" value="UPDATE"/>
+</form>
+</body>
+</html>

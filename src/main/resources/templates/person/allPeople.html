@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>all_people</title>
+</head>
+<body>
+<div th:each="person: ${peopleList}">
+    <span th:text="${person.getId()}"></span>
+    <span th:text="${person.getName()}"></span>
+    <span th:text="${person.getSurname()}"></span>
+    <span th:text="${person.getPatronymic()}"></span>
+    <span th:text="${person.getDob()}"></span>
+    <button><a th:href="@{/person/{id} (id = ${person.getId()})}">DETAILS</a></button>
+    <br/>
+    <hr/>
+</div>
+<button>
+    <a href="/person/new">
+        ADD
+    </a>
+</button>
+
+</body>
+</html>

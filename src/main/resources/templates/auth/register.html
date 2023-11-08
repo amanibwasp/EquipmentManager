@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>register</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/register}" th:object="${person}">
+  <label type="text" for="name">Name:</label>
+  <input type="text" id="name" name="name" th:field="*{name}"/>
+
+  <label type="text" for="surname">Surname:</label>
+  <input type="text" id="surname" name="surname" th:field="*{surname}"/>
+
+  <label type="text" for="patronymic">Patronymic:</label>
+  <input type="text" id="patronymic" name="patronymic" th:field="*{patronymic}"/>
+
+  <label type="text" for="email">Email:</label>
+  <input type="text" id="email" name="email" th:field="*{email}"/>
+
+  <label type="text" for="password">Password:</label>
+  <input type="text" id="password" name="password" th:field="*{password}"/>
+
+  <div sec:authorize="hasRole('ROLE_ADMIN')">
+    <label type="text" for="role">Role:</label>
+    <select name="role" id="role" th:field="*{role}">
+      <option th:each="roleOpt : ${T(ru.amanibwasp.EquipmentManager.models.Role).values()}"
+              th:value="${roleOpt}" th:text="${roleOpt}"></option>
+    </select>
+  </div>
+  <label for="dob">Enter date of birth:</label>
+  <input type="date" id="dob" name="dob" value="2000-07-22" min="1900-01-01" max="2018-12-31" th:field="*{dob}"/>
+  <input type="submit" value="ADD"/>
+</form>
+</body>
+</html>

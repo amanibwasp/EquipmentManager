@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update_event</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/event/{id}/edit (id = ${event.getId()})}" th:object="${event}">
+    <label type="text" for="title">Title:</label>
+    <input type="text" id="title" name="title" th:field="*{title}"/>
+
+    <label type="text" for="description">Description:</label>
+    <input type="text" id="description" name="description" th:field="*{description}"/>
+
+    <label for="event_date">Enter date of the event:</label>
+    <input type="date" id="event_date" name="event-date" value="2023-11-22" min="2018-01-01" max="3000-12-31" th:field="*{event_date}"/>
+
+    <label for="participants">
+        <select th:field="*{participants}" id="participants" multiple="multiple">
+            <option th:each="person : ${people}" th:value="${person.id}">
+                <span th:text="${person.name}"></span>
+                <span th:text="${person.surname}"></span>
+                <span th:text="${person.email}"></span>
+            </option>
+        </select>
+    </label>
+
+    <input type="submit" value="UPDATE"/>
+</form>
+</body>
+</html>
